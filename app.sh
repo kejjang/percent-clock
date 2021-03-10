@@ -80,9 +80,8 @@ then
         fi
 
         __PCLOCK=`echo "scale=2; 100*$__PCLOCK_ELAPSED/$__PCLOCK_TOTAL" | bc -l`
-        __PCLOCK=${__PCLOCK%"0"}
-        __PCLOCK=${__PCLOCK%"0"}
-        __PCLOCK=${__PCLOCK%"."}
+        __PCLOCK=`echo $__PCLOCK | sed 's/0*$//g'`
+        __PCLOCK=`echo $__PCLOCK | sed 's/\.$//g'`
         __PCLOCK="$__PCLOCK%"
     fi
 
